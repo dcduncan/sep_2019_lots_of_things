@@ -22,6 +22,14 @@ compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
+task runNpmBuild(type: Exec) {
+    commandLine 'npm', 'run', 'build'
+}
+
+compileKotlin {
+    dependsOn ':runNpmBuild'
+}
+
 mainClassName = 'com.dj.app.MainAppKt'
 
 dependencies {
